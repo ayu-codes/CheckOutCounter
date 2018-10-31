@@ -1,5 +1,7 @@
 # CheckOutCounter
-This an application which performs the function of a check out counter of any billing station. It has locale support as well.
+This an application which performs the function of a check out counter of any billing station. It has locale support as well. The default locale is set to English, India.
+
+This application implemented using Spring Boot's starter project.
 
 Below REST end points exposed here :
 - /billing : Adding items for billing.
