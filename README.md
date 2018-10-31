@@ -5,6 +5,6 @@ Below REST end points exposed here :
 - /billing : Adding items for billing.
 - /billing/{lanugage}/{country} : Adding items for billing for a locale, example: /billling/de/DE.
 - /generateBill : Generating the bill for the added items.
-- /generateBill/{}/{} : Generating the bill for the added items for a locale, example: /generateBill/cs/CZ
+- /generateBill/{language}/{country} : Generating the bill for the added items for a locale, example: /generateBill/cs/CZ
 	
 	
