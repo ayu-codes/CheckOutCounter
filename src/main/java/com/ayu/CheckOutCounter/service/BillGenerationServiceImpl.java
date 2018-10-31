@@ -1,6 +1,8 @@
 package com.ayu.CheckOutCounter.service;
 
+import java.text.NumberFormat;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 import com.ayu.CheckOutCounter.model.Product;
@@ -13,15 +15,17 @@ public class BillGenerationServiceImpl implements BillGenerationService {
 	}
 
 	@Override
-	public StringBuilder printItems(HashMap<String, Product> items) {
+	public StringBuilder printItems(Locale locale, HashMap<String, Product> items) {
+		NumberFormat nf = NumberFormat.getInstance(locale);
+		nf.setMaximumFractionDigits(2);
+		nf.setMinimumFractionDigits(2);
 		StringBuilder sb = new StringBuilder();
 		sb.append("ProductName \t Quantity \t ProductCost \t SalesTaxPercent \t Salestax \t WithTaxCost \n");
 		for (Map.Entry<String, Product> entry : items.entrySet()) {
 			sb.append(entry.getValue().getProductName() + "\t" + entry.getValue().getQuantity() + "\t"
-					+ String.format("%.2f", entry.getValue().getProductCost()) + "\t"
-					+ entry.getValue().getSalesTaxPercent() + "\t"
-					+ String.format("%.2f", calculateSalesTax(entry.getValue())) + "\t"
-					+ String.format("%.2f", getWithTaxCost(entry)) + "\n");
+					+ nf.format(entry.getValue().getProductCost()) + "\t"
+					+ nf.format(entry.getValue().getSalesTaxPercent()) + "\t"
+					+ nf.format(calculateSalesTax(entry.getValue())) + "\t" + nf.format(getWithTaxCost(entry)) + "\n");
 		}
 		return sb;
 	}
