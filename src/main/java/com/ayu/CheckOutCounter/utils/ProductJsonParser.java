@@ -1,11 +1,9 @@
 package com.ayu.CheckOutCounter.utils;
 
 import java.io.IOException;
-import java.util.HashMap;
 
 import org.springframework.stereotype.Component;
 
-import com.ayu.CheckOutCounter.model.Product;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectReader;
@@ -25,7 +23,7 @@ public class ProductJsonParser {
 			JsonNode node = ProductJsonParser.reader.readTree(productDetailsJson);
 			JsonNode prodNameNode = node.get("productName");
 			if (prodNameNode != null) {
-				productName = prodNameNode.asText();
+				productName = prodNameNode.asText().trim();
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -39,7 +37,7 @@ public class ProductJsonParser {
 			JsonNode node = ProductJsonParser.reader.readTree(productDetailsJson);
 			JsonNode productCategoryNode = node.get("productCategory");
 			if (productCategoryNode != null) {
-				productName = productCategoryNode.asText();
+				productName = productCategoryNode.asText().trim();
 			}
 		} catch (IOException e) {
 			e.printStackTrace();

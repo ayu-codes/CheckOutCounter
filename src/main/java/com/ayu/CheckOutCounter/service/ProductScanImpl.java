@@ -31,13 +31,13 @@ public class ProductScanImpl implements ProductScanService {
 
 	public Map<String, Product> addBillingItems(Map<String, Product> items, String productName, double productCost,
 			String productCategory) throws InvalidProductException {
-		Product product = scanProduct(productCategory, productName, productCost);
-		if (items.containsKey(productName)) {
-			int quantity = items.get(productName).getQuantity();
+		Product product = scanProduct(productCategory.toUpperCase(), productName.toUpperCase(), productCost);
+		if (items.containsKey(productName.toUpperCase())) {
+			int quantity = items.get(productName.toUpperCase()).getQuantity();
 			product.setQuantity(quantity + 1);
-			items.put(productName, product);
+			items.put(productName.toUpperCase(), product);
 		} else {
-			items.put(productName, product);
+			items.put(productName.toUpperCase(), product);
 		}
 		return items;
 	}
