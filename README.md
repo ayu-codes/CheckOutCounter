@@ -10,7 +10,9 @@ Below REST end points exposed here :
 - /generateBill/{language}/{country} : Get endpoint for generating the bill for the added items for a locale, example: /generateBill/cs/CZ.
 
 Headers: Accept:application/json, Content-Type-application/json
-Body: 
+
+Body:
+
 {"productName":"Banana",
 "productCost":2000000.23,
 "productCategory":"A"}
